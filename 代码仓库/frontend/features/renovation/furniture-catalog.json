@@ -1,0 +1,482 @@
+{
+  "sofa": {
+    "image": "/images/furniture/sofa-v1.png",
+    "options": [
+      {
+        "id": "sofa-1",
+        "name": "亚麻布艺沙发",
+        "panel": 0
+      },
+      {
+        "id": "sofa-2",
+        "name": "焦糖皮质沙发",
+        "panel": 1
+      },
+      {
+        "id": "sofa-3",
+        "name": "低矮模块沙发",
+        "panel": 2
+      }
+    ]
+  },
+  "coffee-table": {
+    "image": "/images/furniture/coffee-table-v1.png",
+    "options": [
+      {
+        "id": "coffee-table-1",
+        "name": "圆形木质茶几",
+        "panel": 0
+      },
+      {
+        "id": "coffee-table-2",
+        "name": "浅色石纹茶几",
+        "panel": 1
+      },
+      {
+        "id": "coffee-table-3",
+        "name": "通透玻璃茶几",
+        "panel": 2
+      }
+    ]
+  },
+  "tv-stand": {
+    "image": "/images/furniture/tv-stand-v1.png",
+    "options": [
+      {
+        "id": "tv-stand-1",
+        "name": "木质格栅电视柜",
+        "panel": 0
+      },
+      {
+        "id": "tv-stand-2",
+        "name": "奶白矮柜",
+        "panel": 1
+      },
+      {
+        "id": "tv-stand-3",
+        "name": "玻璃门电视柜",
+        "panel": 2
+      }
+    ]
+  },
+  "floor-lamp": {
+    "image": "/images/furniture/floor-lamp-v1.png",
+    "options": [
+      {
+        "id": "floor-lamp-1",
+        "name": "锥罩落地灯",
+        "panel": 0
+      },
+      {
+        "id": "floor-lamp-2",
+        "name": "弧形落地灯",
+        "panel": 1
+      },
+      {
+        "id": "floor-lamp-3",
+        "name": "球形落地灯",
+        "panel": 2
+      }
+    ]
+  },
+  "living-main-light": {
+    "image": "/images/furniture/main-light-v1.png",
+    "options": [
+      {
+        "id": "living-main-light-1",
+        "name": "圆盘吸顶灯",
+        "panel": 0
+      },
+      {
+        "id": "living-main-light-2",
+        "name": "木框吸顶灯",
+        "panel": 1
+      },
+      {
+        "id": "living-main-light-3",
+        "name": "枝形吊灯",
+        "panel": 2
+      }
+    ]
+  },
+  "bedroom-main-light": {
+    "image": "/images/furniture/main-light-v1.png",
+    "options": [
+      {
+        "id": "bedroom-main-light-1",
+        "name": "圆盘吸顶灯",
+        "panel": 0
+      },
+      {
+        "id": "bedroom-main-light-2",
+        "name": "木框吸顶灯",
+        "panel": 1
+      },
+      {
+        "id": "bedroom-main-light-3",
+        "name": "枝形吊灯",
+        "panel": 2
+      }
+    ]
+  },
+  "rug": {
+    "image": "/images/furniture/rug-v1.png",
+    "options": [
+      {
+        "id": "rug-1",
+        "name": "素色圈绒地毯",
+        "panel": 0
+      },
+      {
+        "id": "rug-2",
+        "name": "复古纹样地毯",
+        "panel": 1
+      },
+      {
+        "id": "rug-3",
+        "name": "几何拼色地毯",
+        "panel": 2
+      }
+    ]
+  },
+  "bedroom-rug": {
+    "image": "/images/furniture/rug-v1.png",
+    "options": [
+      {
+        "id": "bedroom-rug-1",
+        "name": "素色圈绒地毯",
+        "panel": 0
+      },
+      {
+        "id": "bedroom-rug-2",
+        "name": "复古纹样地毯",
+        "panel": 1
+      },
+      {
+        "id": "bedroom-rug-3",
+        "name": "几何拼色地毯",
+        "panel": 2
+      }
+    ]
+  },
+  "curtain": {
+    "image": "/images/furniture/curtain-v1.png",
+    "options": [
+      {
+        "id": "curtain-1",
+        "name": "亚麻感窗帘",
+        "panel": 0
+      },
+      {
+        "id": "curtain-2",
+        "name": "轻透纱帘",
+        "panel": 1
+      },
+      {
+        "id": "curtain-3",
+        "name": "折叠罗马帘",
+        "panel": 2
+      }
+    ]
+  },
+  "wall-art": {
+    "image": "/images/furniture/wall-art-v1.png",
+    "options": [
+      {
+        "id": "wall-art-1",
+        "name": "抽象色块挂画",
+        "panel": 0
+      },
+      {
+        "id": "wall-art-2",
+        "name": "植物线描挂画",
+        "panel": 1
+      },
+      {
+        "id": "wall-art-3",
+        "name": "风景摄影挂画",
+        "panel": 2
+      }
+    ]
+  },
+  "green-plant": {
+    "image": "/images/furniture/green-plant-v1.png",
+    "options": [
+      {
+        "id": "green-plant-1",
+        "name": "琴叶榕造型",
+        "panel": 0
+      },
+      {
+        "id": "green-plant-2",
+        "name": "龟背竹造型",
+        "panel": 1
+      },
+      {
+        "id": "green-plant-3",
+        "name": "橄榄树造型",
+        "panel": 2
+      }
+    ]
+  },
+  "cushion": {
+    "image": "/images/furniture/cushion-v1.png",
+    "options": [
+      {
+        "id": "cushion-1",
+        "name": "素色方形抱枕",
+        "panel": 0
+      },
+      {
+        "id": "cushion-2",
+        "name": "纹理方形抱枕",
+        "panel": 1
+      },
+      {
+        "id": "cushion-3",
+        "name": "条纹长腰枕",
+        "panel": 2
+      }
+    ]
+  },
+  "side-table": {
+    "image": "/images/furniture/side-table-v1.png",
+    "options": [
+      {
+        "id": "side-table-1",
+        "name": "木质圆边几",
+        "panel": 0
+      },
+      {
+        "id": "side-table-2",
+        "name": "金属托盘边几",
+        "panel": 1
+      },
+      {
+        "id": "side-table-3",
+        "name": "玻璃边几",
+        "panel": 2
+      }
+    ]
+  },
+  "bed": {
+    "image": "/images/furniture/bed-v1.png",
+    "options": [
+      {
+        "id": "bed-1",
+        "name": "木质靠背床",
+        "panel": 0
+      },
+      {
+        "id": "bed-2",
+        "name": "弧形软包床",
+        "panel": 1
+      },
+      {
+        "id": "bed-3",
+        "name": "抽屉收纳床",
+        "panel": 2
+      }
+    ]
+  },
+  "bedding": {
+    "image": "/images/furniture/bedding-v1.png",
+    "options": [
+      {
+        "id": "bedding-1",
+        "name": "奶白素色床品",
+        "panel": 0
+      },
+      {
+        "id": "bedding-2",
+        "name": "细条纹床品",
+        "panel": 1
+      },
+      {
+        "id": "bedding-3",
+        "name": "复古格纹床品",
+        "panel": 2
+      }
+    ]
+  },
+  "nightstand": {
+    "image": "/images/furniture/nightstand-v1.png",
+    "options": [
+      {
+        "id": "nightstand-1",
+        "name": "单抽屉床头柜",
+        "panel": 0
+      },
+      {
+        "id": "nightstand-2",
+        "name": "双抽屉床头柜",
+        "panel": 1
+      },
+      {
+        "id": "nightstand-3",
+        "name": "开放格床头柜",
+        "panel": 2
+      }
+    ]
+  },
+  "wardrobe": {
+    "image": "/images/furniture/wardrobe-v1.png",
+    "options": [
+      {
+        "id": "wardrobe-1",
+        "name": "木纹平开门衣柜",
+        "panel": 0
+      },
+      {
+        "id": "wardrobe-2",
+        "name": "奶白推拉门衣柜",
+        "panel": 1
+      },
+      {
+        "id": "wardrobe-3",
+        "name": "藤编门衣柜",
+        "panel": 2
+      }
+    ]
+  },
+  "dressing-table": {
+    "image": "/images/furniture/dressing-table-v1.png",
+    "options": [
+      {
+        "id": "dressing-table-1",
+        "name": "木质梳妆台",
+        "panel": 0
+      },
+      {
+        "id": "dressing-table-2",
+        "name": "圆镜梳妆台",
+        "panel": 1
+      },
+      {
+        "id": "dressing-table-3",
+        "name": "窄款梳妆台",
+        "panel": 2
+      }
+    ]
+  },
+  "table-lamp": {
+    "image": "/images/furniture/table-lamp-v1.png",
+    "options": [
+      {
+        "id": "table-lamp-1",
+        "name": "布罩台灯",
+        "panel": 0
+      },
+      {
+        "id": "table-lamp-2",
+        "name": "蘑菇台灯",
+        "panel": 1
+      },
+      {
+        "id": "table-lamp-3",
+        "name": "玻璃球台灯",
+        "panel": 2
+      }
+    ]
+  },
+  "desk": {
+    "image": "/images/furniture/desk-v1.png",
+    "options": [
+      {
+        "id": "desk-1",
+        "name": "木质书桌",
+        "panel": 0
+      },
+      {
+        "id": "desk-2",
+        "name": "双柱升降桌",
+        "panel": 1
+      },
+      {
+        "id": "desk-3",
+        "name": "转角书桌",
+        "panel": 2
+      }
+    ]
+  },
+  "dining-table": {
+    "image": "/images/furniture/dining-table-v1.png",
+    "options": [
+      {
+        "id": "dining-table-1",
+        "name": "长方形木质餐桌",
+        "panel": 0
+      },
+      {
+        "id": "dining-table-2",
+        "name": "圆形石纹餐桌",
+        "panel": 1
+      },
+      {
+        "id": "dining-table-3",
+        "name": "圆角伸缩餐桌",
+        "panel": 2
+      }
+    ]
+  },
+  "dining-chair": {
+    "image": "/images/furniture/dining-chair-v1.png",
+    "options": [
+      {
+        "id": "dining-chair-1",
+        "name": "木质餐椅",
+        "panel": 0
+      },
+      {
+        "id": "dining-chair-2",
+        "name": "软包餐椅",
+        "panel": 1
+      },
+      {
+        "id": "dining-chair-3",
+        "name": "藤编餐椅",
+        "panel": 2
+      }
+    ]
+  },
+  "sideboard": {
+    "image": "/images/furniture/sideboard-v1.png",
+    "options": [
+      {
+        "id": "sideboard-1",
+        "name": "木质餐边柜",
+        "panel": 0
+      },
+      {
+        "id": "sideboard-2",
+        "name": "玻璃门餐边柜",
+        "panel": 1
+      },
+      {
+        "id": "sideboard-3",
+        "name": "开放格餐边柜",
+        "panel": 2
+      }
+    ]
+  },
+  "pendant-lamp": {
+    "image": "/images/furniture/pendant-lamp-v1.png",
+    "options": [
+      {
+        "id": "pendant-lamp-1",
+        "name": "玻璃吊灯",
+        "panel": 0
+      },
+      {
+        "id": "pendant-lamp-2",
+        "name": "金属吊灯",
+        "panel": 1
+      },
+      {
+        "id": "pendant-lamp-3",
+        "name": "编织吊灯",
+        "panel": 2
+      }
+    ]
+  }
+}

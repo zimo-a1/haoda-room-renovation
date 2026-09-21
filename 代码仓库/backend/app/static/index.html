@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>软装改造应用 · 验收页</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; color: #222; }
+  h1 { font-size: 20px; }
+  .step { border: 1px solid #e5e5e5; border-radius: 8px; padding: 16px; margin: 12px 0; }
+  .step h2 { font-size: 15px; margin: 0 0 8px; }
+  button { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+  button:disabled { background: #9ca3af; cursor: not-allowed; }
+  img.preview { max-width: 100%; border-radius: 8px; margin-top: 8px; }
+  .msg { color: #555; font-size: 13px; margin-top: 6px; min-height: 18px; }
+  .err { color: #dc2626; }
+  label { display: block; margin: 4px 0; }
+  .product { border-top: 1px dashed #ddd; padding: 6px 0; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>软装改造应用 · 验收页</h1>
+
+<div class="step">
+  <h2>① 上传房间照片</h2>
+  <input type="file" id="file" accept="image/*">
+  <button id="btnUpload">上传</button>
+  <div class="msg" id="uploadMsg"></div>
+</div>
+
+<div class="step">
+  <h2>② 选风格</h2>
+  <select id="style"></select>
+  <div class="msg" id="styleMsg"></div>
+</div>
+
+<div class="step">
+  <h2>③ 选软装元素</h2>
+  <div id="elements"></div>
+</div>
+
+<div class="step">
+  <h2>④ 生成效果图</h2>
+  <button id="btnGenerate">生成（同步等待）</button>
+  <div class="msg" id="genMsg"></div>
+  <img id="result" class="preview" style="display:none">
+  <div id="products" style="margin-top:8px"></div>
+</div>
+
+<script>
+let photoId = null, taskId = null;
+
+const $ = id => document.getElementById(id);
+const show = (el, text, isErr) => { el.textContent = text; el.className = 'msg' + (isErr ? ' err' : ''); };
+const errText = async r => { try { const j = await r.json(); return j.error?.message || '请求失败'; } catch { return '请求失败'; } };
+
+async function loadStyles() {
+  const r = await fetch('/api/v1/styles');
+  const j = await r.json();
+  const sel = $('style');
+  j.styles.forEach(s => { const o = document.createElement('option'); o.value = s.id; o.textContent = s.name; sel.appendChild(o); });
+  loadElements();
+}
+
+async function loadElements() {
+  const styleId = $('style').value;
+  const r = await fetch(`/api/v1/styles/${styleId}/elements`);
+  const j = await r.json();
+  const box = $('elements'); box.innerHTML = '';
+  const byRoom = {};
+  (j.elements || []).forEach(e => {
+    const room = e.room || '其他';
+    (byRoom[room] = byRoom[room] || []).push(e);
+  });
+  Object.keys(byRoom).forEach(room => {
+    const h = document.createElement('div');
+    h.textContent = room;
+    h.style.cssText = 'font-weight:600;margin:8px 0 4px;color:#555;';
+    box.appendChild(h);
+    byRoom[room].forEach(e => {
+      const l = document.createElement('label');
+      l.innerHTML = `<input type="checkbox" value="${e.id}"> ${e.name}`;
+      box.appendChild(l);
+    });
+  });
+}
+
+$('btnUpload').onclick = async () => {
+  const f = $('file').files[0];
+  if (!f) { show($('uploadMsg'), '请先选择图片', true); return; }
+  const fd = new FormData(); fd.append('file', f);
+  const r = await fetch('/api/v1/photos', { method: 'POST', body: fd });
+  if (!r.ok) { show($('uploadMsg'), await errText(r), true); return; }
+  const j = await r.json(); photoId = j.photo_id;
+  show($('uploadMsg'), '上传成功');
+};
+
+$('style').onchange = loadElements;
+
+$('btnGenerate').onclick = async () => {
+  if (!photoId) { show($('genMsg'), '请先上传照片', true); return; }
+  const ids = [...document.querySelectorAll('#elements input:checked')].map(i => i.value);
+  if (!ids.length) { show($('genMsg'), '请至少选一个元素', true); return; }
+  $('btnGenerate').disabled = true; show($('genMsg'), '已提交，生成中…（约 30 秒，请稍候）');
+  const r = await fetch('/api/v1/tasks', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ photo_id: photoId, style_id: $('style').value, element_ids: ids })
+  });
+  if (!r.ok) { $('btnGenerate').disabled = false; show($('genMsg'), await errText(r), true); return; }
+  const created = await r.json(); taskId = created.task_id;
+  let task = created;
+  for (let i = 0; i < 80 && task.status === 'processing'; i++) {
+    if (i > 0) await new Promise(res => setTimeout(res, 3000));
+    try { const rr = await fetch(`/api/v1/tasks/${taskId}`); task = await rr.json(); } catch (e) { /* 继续重试 */ }
+  }
+  $('btnGenerate').disabled = false;
+  if (task.status !== 'succeeded' || !task.result_image_url) { show($('genMsg'), '出图没有成功，请稍后重试', true); return; }
+  $('result').src = task.result_image_url + '?t=' + Date.now(); $('result').style.display = 'block';
+  show($('genMsg'), '生成成功，任务 ID：' + taskId);
+  loadProducts();
+};
+
+async function loadProducts() {
+  const r = await fetch(`/api/v1/tasks/${taskId}/products`, { method: 'POST' });
+  const j = await r.json();
+  const box = $('products'); box.innerHTML = '';
+  if (j.message) { const m = document.createElement('div'); m.textContent = j.message; m.className = 'msg'; box.appendChild(m); }
+  (j.products || []).forEach(p => {
+    const d = document.createElement('div'); d.className = 'product';
+    const title = document.createElement('div');
+    title.innerHTML = `<b>${p.element_name}</b>`;
+    d.appendChild(title);
+    const items = document.createElement('div');
+    items.style.cssText = 'padding-left:8px;';
+    const list = p.items || [];
+    if (list.length) {
+      list.forEach(it => {
+        const a = document.createElement('a');
+        a.href = it.click_url; a.target = '_blank';
+        a.style.cssText = 'display:inline-flex;align-items:center;margin:4px 12px 4px 0;color:#2563eb;text-decoration:none;';
+        if (it.image_url) {
+          const img = document.createElement('img');
+          img.src = it.image_url;
+          img.style.cssText = 'width:56px;height:56px;object-fit:cover;border-radius:6px;margin-right:6px;border:1px solid #eee;';
+          a.appendChild(img);
+        }
+        const span = document.createElement('span');
+        span.textContent = it.title + (it.price ? `（${it.price}）` : '');
+        a.appendChild(span);
+        items.appendChild(a);
+      });
+    } else {
+      const s = document.createElement('span');
+      s.textContent = '暂无对应商品';
+      s.style.color = '#888';
+      items.appendChild(s);
+    }
+    d.appendChild(items);
+    box.appendChild(d);
+  });
+}
+
+loadStyles();
+</script>
+</body>
+</html>

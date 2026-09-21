@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 511" role="img" aria-labelledby="title desc">
+  <title id="title">好搭</title>
+  <desc id="desc">好搭品牌标志</desc>
+  <g fill="#023A2A">
+    <path d="M90 84h120l-26 104h88l27-104h120l-76 300h-120l25-99h-88l-25 99H15L90 84Z"/>
+    <path d="M473 84h112l-18 69h89l18-69h112l-75 300H599l22-89h-89l-22 89H398l75-300Zm80 155-19 75h89l19-75h-89Z"/>
+    <path d="M825 84h118l-26 104h84l27-104h118l-75 300H953l25-99h-84l-25 99H750l75-300Zm80 155-19 75h84l19-75h-84Z"/>
+    <path d="M1198 84h116l-75 300h-116l75-300Zm154 0h116l-75 300h-116l75-300Z"/>
+  </g>
+  <circle cx="1540" cy="390" r="42" fill="#FD7014"/>
+</svg>

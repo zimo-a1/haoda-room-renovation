@@ -1,0 +1,41 @@
+# 密钥与本地配置（不进仓库）
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# 本地运行时数据与产物
+data/
+*.db
+*.sqlite3
+
+# 前端
+node_modules/
+.next/
+coverage/
+*.tsbuildinfo
+playwright-report/
+test-results/
+.demo-build/
+
+# 系统
+.DS_Store
+
+# 上传副本：敏感凭证、私有验收素材与本机备份不上传
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.zip
+*.tar
+*.tar.gz
+credentials.json
+service-account*.json
+docs/evidence/
