@@ -16,7 +16,7 @@ data/
 *.sqlite3
 
 # 前端
-node_modules/
+node_modules
 .next/
 coverage/
 *.tsbuildinfo
@@ -39,3 +39,11 @@ test-results/
 credentials.json
 service-account*.json
 docs/evidence/
+
+# 本仓库只维护软装应用，不同步本机的产品生成工具包和内部流程文档
+/docs/
+/prd/
+/代码仓库/
+AGENTS.md
+CLAUDE.md
+/开始看这里.md

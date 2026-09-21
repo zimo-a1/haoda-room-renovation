@@ -45,6 +45,11 @@ if result.returncode or Path(result.stdout.strip()).resolve() != ROOT:
 tracked = subprocess.check_output([GIT, "ls-files", "-z"], cwd=ROOT).decode().split("\0")
 for path in filter(None, tracked):
     file = Path(path)
+    if (ROOT / file).is_symlink() or any(part in SKIP for part in file.parts):
+        findings.add(("index", path, "symlink or dependency/build artifact must not be uploaded"))
+    allowed_roots = {"backend", "frontend", "scripts", ".gitignore", "README.md", "SECURITY.md", "LICENSE"}
+    if file.parts[0] not in allowed_roots or file.name in {"AGENTS.md", "CLAUDE.md"}:
+        findings.add(("index", path, "outside room-renovation repository scope"))
     if ((file.name.startswith(".env") and file.name != ".env.example")
             or file.suffix in {".db", ".sqlite3", ".pem", ".key", ".p12", ".pfx", ".zip"}
             or "data" in file.parts or path.startswith("docs/evidence/")):

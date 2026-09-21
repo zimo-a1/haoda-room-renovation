@@ -4,7 +4,7 @@
 const assert = (await import("node:assert/strict")).default;
 const path = await import("node:path");
 const fs = await import("node:fs/promises");
-const evidence = path.resolve(process.cwd(), "../../docs/evidence/阶段3/第1子阶段");
+const evidence = path.resolve(process.cwd(), "test-results/browser-smoke");
 await fs.mkdir(evidence, { recursive: true });
 const task = await taskSpace(process.env.FRONTEND_QA_SPACE ? Number(process.env.FRONTEND_QA_SPACE) : "软装前端代表页验收");
 const page = task.page("p1");
